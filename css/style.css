@@ -103,13 +103,153 @@ body{
     width: 100%;
     padding-top: 0.6rem;
     /* padding-bottom: 0.6rem; */
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 3rem;
+    padding-right: 2rem;
+    padding-bottom: 0.6rem;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
     position: fixed;
+}
+.about{
+    padding:60px 8%;
+}
+
+.heading{
+    text-align:center;
+    font-size:36px;
+    margin-bottom:40px;
+    text-transform:capitalize;
+}
+
+.about-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+.about-image{
+    flex:1 1 450px;
+}
+
+.about-image img{
+    width:100%;
+    border-radius:10px;
+}
+
+.about-content{
+    flex:1 1 450px;
+}
+
+.about-content h3{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.about-content p{
+    font-size:16px;
+    line-height:1.7;
+    margin-bottom:15px;
+    color:#555;
+}
+
+.btn{
+    padding:12px 25px;
+    background:#0d6efd;
+    border:none;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.btn:hover{
+    background:#084298;
+}
+
+/* Responsive */
+
+@media (max-width:768px){
+
+    .about-row{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .about-content h3{
+        font-size:24px;
+    }
+
+}
+.about{
+    padding:60px 8%;
+}
+
+/* Heading */
+
+.about .heading{
+    text-align:center;
+    font-size:36px;
+    margin-bottom:40px;
+    text-transform:capitalize;
+}
+
+/* Row Layout */
+
+.about .row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+/* Text Content */
+
+.about .content{
+    flex:1 1 450px;
+}
+
+.about .content h3{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.about .content p{
+    font-size:16px;
+    line-height:1.7;
+    margin-bottom:15px;
+    color:#555;
+}
+
+/* Image */
+
+.about .about-image{
+    flex:1 1 450px;
+}
+
+.about .about-image img{
+    width:100%;
+    border-radius:10px;
+    display:block;
+}
+
+/* Responsive */
+
+@media (max-width:768px){
+
+    .about .row{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .about .content h3{
+        font-size:24px;
+    }
+
 }
 
 .header--scrolled{
@@ -129,8 +269,8 @@ body{
 }
 
 .header .logo img{
-    height: 6.2rem;      /* increase this to make logo bigger */
-    width: 13rem;        /* fixed box so padded logos look larger */
+    height: 6.8rem;      /* increase this to make logo bigger */
+    width: 16rem;        /* fixed box so padded logos look larger */
     max-width: 18rem;    /* prevents pushing navbar around */
     object-fit: cover;   /* crops extra empty/black space in the image */
     object-position: center;
@@ -238,8 +378,9 @@ body{
 .home{
     min-height: 100vh;
     width: 100vw;
-    background-image: url(../images/img1.jpg);
+    background-image: url(../images/home.png);
     background-size: cover;
+    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -250,14 +391,29 @@ body{
     overflow: hidden !important;
 }
 
+/* Dark Overlay */
+
+.home::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45); /* darkness level */
+    z-index: 0;
+}
+
 .home h1{
     color: #fff;
     font-size: 5.5rem;
+    z-index: 1;
 }
 
 .home h2{
     color: #fff;
     font-size: 3rem;
+    z-index: 1;
 }
 
 .home .wave{
@@ -1076,34 +1232,72 @@ body{
             z-index: 9;
         }
 
-/* --- Multi-page additions (no PHP) --- */
-.page-hero{
-    min-height: 45vh;
-    width: 100vw;
-    background: linear-gradient(135deg, rgba(0,46,95,0.92), rgba(0,191,255,0.35)), url(../images/img1.jpg);
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 9rem 1.5rem 5rem;
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-}
-
-.page-hero h1{
-    font-size: 4rem;
-    margin-bottom: .8rem;
-}
-
-.page-hero p{
-    font-size: 1.8rem;
-    max-width: 70rem;
-    margin: 0 auto;
-    opacity: .95;
-}
+        .page-hero{
+            min-height: 45vh;
+            width: 100vw;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 9rem 1.5rem 5rem;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* About Page */
+        
+        .page--about .page-hero{
+            background:
+                linear-gradient(135deg, rgba(0,46,95,0.85), rgba(0,191,255,0.35)),
+                url(../images/about.png);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Services Page */
+        
+        .page--services .page-hero{
+            background:
+                linear-gradient(135deg, rgba(0,46,95,0.85), rgba(0,191,255,0.35)),
+                url(../images/service.png);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Why Us Page */
+        
+        .page--why-us .page-hero{
+            background:
+                linear-gradient(135deg, rgba(0,46,95,0.85), rgba(0,191,255,0.35)),
+                url(../images/whyus.png);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Contact Page */
+        
+        .page--contact .page-hero{
+            background:
+                linear-gradient(135deg, rgba(0,46,95,0.85), rgba(0,191,255,0.35)),
+                url(../images/contact.png);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .page-hero h1{
+            font-size: 4rem;
+            margin-bottom: .8rem;
+        }
+        
+        .page-hero p{
+            font-size: 1.8rem;
+            max-width: 70rem;
+            margin: 0 auto;
+            opacity: .95;
+        }
 
 .page-section{
     padding: 6rem 0;
@@ -1118,6 +1312,12 @@ body{
     position: relative;
 }
 
+.site-footer .container{
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .site-footer::before{
     content: '';
     position: absolute;
@@ -1128,6 +1328,11 @@ body{
     background: linear-gradient(90deg, #00bfff, #52ab98, #00bfff);
     opacity: .9;
 }
+.site-footer .footer-container{
+    /* max-width: 100%; */
+    padding-left: 4rem;
+    padding-right: 0;
+}
 
 .site-footer .footer-grid{
     display: grid;
@@ -1137,14 +1342,17 @@ body{
 }
 
 .site-footer .footer-brand{
-    display: flex;
+    /* display: flex; */
     gap: 1.2rem;
     align-items: flex-start;
 }
 
 .site-footer .footer-brand img{
-    width: 80px;
-    height: 60px;
+    width:60%;
+    height:60%;
+    object-fit:cover;
+    object-position:left;
+    margin-left: -2rem;
 }
 
 .site-footer h3{
@@ -1184,6 +1392,7 @@ body{
     display: flex;
     gap: .9rem;
     margin-top: 1.4rem;
+    /* justify-content: center; */
 }
 
 .site-footer .footer-social a{
@@ -1209,6 +1418,12 @@ body{
     border-top: 1px solid rgba(255,255,255,0.12);
     font-size: 1.4rem;
     color: rgba(255,255,255,0.7);
+    
+}
+.site-footer .footer-bottom .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 992px){
@@ -1319,16 +1534,20 @@ body{
     .header .fa-bars:hover{
         color: #00bfff;
     }
-
+    /* .header{
+        background-color: #002e5f;
+    } */
     .header .navbar{
         position: fixed;
         top: -120%;
         left: 0;
         height: auto;
         width: 100%;
-        background-color: white;
+        background-color: #002e5f;
         z-index: 1000;
-        border-top: .1rem solid rgba(0,0,0,.3);
+        border-top: none;
+        box-shadow: 0 .2rem .5rem rgba(0,0,0,.4);
+        
     }
 
     .header .navbar ul{
@@ -1338,12 +1557,18 @@ body{
     }
 
     .header .navbar ul li{
-        margin: 1rem 0;
+        margin: 0.8rem 0;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .header .navbar ul li:last-child{
+        border-bottom: none;
     }
 
     .header .navbar ul li a{
-        color: grey;
-        font-size: 2.4rem;
+        color: #ffffff;
+        font-size: 2.2rem;
     }
 
     .header .fa-times{

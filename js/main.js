@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!menuButton || !navbar) return;
     menuButton.classList.remove('fa-times');
     navbar.classList.remove('nav-toggle');
+    header.style.backgroundColor = "";
   }
 
   function updateHeaderState() {
@@ -29,6 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
   menuButton?.addEventListener('click', () => {
     menuButton.classList.toggle('fa-times');
     navbar?.classList.toggle('nav-toggle');
+  
+    if (navbar.classList.contains('nav-toggle')) {
+      // Menu opened
+      header.style.backgroundColor = "#002e5f";
+    } else {
+      // Menu closed
+      header.style.backgroundColor = "";
+    }
   });
 
   window.addEventListener('scroll', () => {
