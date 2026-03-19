@@ -138,6 +138,30 @@ body{
 .about-image img{
     width:100%;
     border-radius:10px;
+    display:block; /* prevents extra whitespace under inline images on mobile */
+}
+
+/* WhatsApp loading spinner (Contact page only) */
+.whatsapp-loader{
+    display:none;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    border:2px solid rgba(0,0,0,.2);
+    border-top-color:#00bfff;
+    animation:whatsappSpin .8s linear infinite;
+    margin-left:.6rem;
+    vertical-align:middle;
+}
+.whatsapp-loader.is-loading{
+    display:inline-block;
+}
+.contact-form-btn.is-loading i.fa-whatsapp{
+    display:none;
+}
+@keyframes whatsappSpin{
+    0%{ transform: rotate(0deg); }
+    100%{ transform: rotate(360deg); }
 }
 
 .about-content{
@@ -228,13 +252,16 @@ body{
 /* Image */
 
 .about .about-image{
-    flex:1 1 450px;
+    flex: 1 1 450px;
 }
 
 .about .about-image img{
-    width:100%;
-    border-radius:10px;
-    display:block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 2/ 1;   /* makes it square */
+    object-fit: cover;     /* removes extra space, fills properly */
+    border-radius: 10px;
+    display: block;
 }
 
 /* Responsive */
@@ -476,7 +503,7 @@ body{
 }
 
 .about .row .content p{
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #333;
     padding: 1rem 0;
 }
@@ -1064,7 +1091,20 @@ body{
             height: 3.5rem;
             width: 15rem;
             box-shadow: 0 .2rem .5rem rgba(0,0,0,.3);
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px;
 		}
+        .contact-form-btn input{
+            background:none;
+            border:none;
+        }
+        .contact-form-btn:hover input{
+            color: white;
+        }
         .contact-form-btn:hover{
             letter-spacing: .1rem;
             opacity: .9;
@@ -1348,8 +1388,8 @@ body{
 }
 
 .site-footer .footer-brand img{
-    width:60%;
-    height:60%;
+    width:50%;
+    height:50%;
     object-fit:cover;
     object-position:left;
     margin-left: -2rem;
@@ -1386,6 +1426,15 @@ body{
 .site-footer .footer-meta{
     font-size: 1.5rem;
     line-height: 2.6rem;
+
+}
+.footer-meta p{
+    margin: 0;
+    padding: 0;
+
+}
+.footer-meta a{
+    color: bisque;
 }
 
 .site-footer .footer-social{
@@ -1512,17 +1561,23 @@ body{
         min-height: 70vh;
     }
 }        
-
+@media (max-width:600px)
+{
+    .contact-map{
+        display: none;
+    }
+}
 @media (max-width: 1000px){
     html{
         font-size: 50%;
     }
 
     .header .logo img{
-        height: 5.6rem;   /* mobile logo size */
+        /* height: 5.6rem;   mobile logo size */
         width: 16rem;
         max-width: 16rem;
         object-fit: cover;
+        z-index: 2222222222222222222222222;
     }
 
     .header .fa-bars{
@@ -1619,7 +1674,7 @@ body{
     }
     
     .about .row .content p{
-        font-size: 1.3rem;
+        font-size: 1.8rem;
         color: #333;
         padding: 1rem 0;
     } 
@@ -1752,9 +1807,24 @@ body{
             font-size: 1.5rem;
             cursor: pointer;
             height: 3.5rem;
-            width: 12rem;
+            /* width: rem; */
             box-shadow: 0 .2rem .5rem rgba(0,0,0,.3);
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap:2px;
+            padding: 8px;
 		}
+       
+        .contact-form-btn input{
+            background:none;
+            border:none;
+        }
+        .contact-form-btn:hover input{
+            color: white;
+        }
         .contact-form-btn:hover{
             letter-spacing: .1rem;
             opacity: .9;

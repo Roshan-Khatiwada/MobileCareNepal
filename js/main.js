@@ -77,26 +77,65 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCount();
   });
 
-  // Static contact form (no backend): opens user's mail client via mailto:
-  const contactForm = document.querySelector('form[data-mailto]');
+  // Static contact form (no backend): opens WhatsApp with the typed message.
+  // Fallback behavior:
+  // - Android: fallback to Play Store if the app doesn't open.
+  // - Others (desktop/iOS): fallback to WhatsApp Web.
+  const contactForm = document.querySelector('form[data-whatsapp-phone]');
   contactForm?.addEventListener('submit', (e) => {
     e.preventDefault();
-    const to = contactForm.getAttribute('data-mailto') || '';
-    if (!to) return;
+
+    const whatsappPhone = String(contactForm.getAttribute('data-whatsapp-phone') || '').trim();
+    if (!whatsappPhone) return;
+
+    const submitWrap = contactForm.querySelector('.contact-form-btn');
+    const submitBtn = contactForm.querySelector('.contact-form-btn input[type="submit"]');
+    const whatsappLoader = contactForm.querySelector('.whatsapp-loader');
+    const setLoading = (isLoading) => {
+      submitWrap?.classList.toggle('is-loading', isLoading);
+      if (submitBtn) submitBtn.disabled = isLoading;
+      if (whatsappLoader) whatsappLoader.classList.toggle('is-loading', isLoading);
+    };
+    setLoading(true);
 
     const formData = new FormData(contactForm);
     const name = String(formData.get('name') || '').trim();
-    const phone = String(formData.get('phone') || '').trim();
-    const email = String(formData.get('email') || '').trim();
     const message = String(formData.get('message') || '').trim();
 
-    const subject = encodeURIComponent('Website contact request');
-    const body = encodeURIComponent(
-      `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\n\nMessage:\n${message}\n`
-    );
+    const defaultText = String(contactForm.getAttribute('data-whatsapp-default-text') || '').trim();
+    const baseText = message || defaultText || 'Hello, I need mobile repair service.';
 
-    window.location.href = `mailto:${encodeURIComponent(to)}?subject=${subject}&body=${body}`;
-    contactForm.reset();
+    const text = name ? `Hi, I'm ${name}.\n${baseText}` : baseText;
+    const encodedText = encodeURIComponent(text);
+
+    // Deep link opens WhatsApp app (if installed).
+    const whatsappDeepLink = `whatsapp://send?phone=${whatsappPhone}&text=${encodedText}`;
+    // Web fallback always works when app isn't installed.
+    const whatsappWebLink = `https://wa.me/${whatsappPhone}?text=${encodedText}`;
+    const androidPlayStoreLink = 'https://play.google.com/store/apps/details?id=com.whatsapp';
+
+    const ua = navigator.userAgent || '';
+    const isAndroid = /Android/i.test(ua);
+
+    const fallbackUrl = isAndroid ? androidPlayStoreLink : whatsappWebLink;
+
+    let opened = false;
+    const onVisibilityChange = () => {
+      opened = document.visibilityState === 'hidden';
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange, { once: true });
+
+    try {
+      window.location.href = whatsappDeepLink;
+    } catch {
+      window.location.href = fallbackUrl;
+      return;
+    }
+
+    // If WhatsApp didn't open, redirect to the fallback after a short delay.
+    window.setTimeout(() => {
+      if (!opened) window.location.href = fallbackUrl;
+    }, isAndroid ? 2500 : 3500);
   });
 
 

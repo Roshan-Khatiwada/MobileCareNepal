@@ -41,19 +41,23 @@
 
     <div class="contact-in">
       <div class="contact-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d220.78750558536356!2d85.33337470781204!3d27.698752484208747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a214e739cd%3A0x3018f9f241f925a8!2zUHVqYSBQcmF0aXN0aGFuIOCkquClgeCknOCkviDgpKrgpY3gpLDgpKTgpL_gpLfgpY3gpKDgpL7gpKg!5e0!3m2!1sen!2snp!4v1773060803816!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.4562058048614!2d85.32008437546719!3d27.70319737618502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a64b5f13e1%3A0x28b2d0eacda46b98!2sPutalisadak%2C%20Kathmandu%2044600!5e0!3m2!1sen!2snp!4v1773941249357!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>      </div>
 
       <div class="contact-form">
-        <form data-mailto="info@mobilecarenepal.com">
-          <input type="text" name="name" placeholder="Name" class="contact-form-txt" required>
-          <input type="tel" name="phone" pattern="[0-9]{10}" required placeholder="Contact number" maxlength="10" class="contact-form-phone">
-          <input type="email" name="email" placeholder="Email" class="contact-form-email" required>
-          <textarea placeholder="Your Message" name="message" class="contact-form-txtarea" required></textarea>
+        <form data-mailto="" data-whatsapp-phone="9779808166785" data-whatsapp-default-text="Hello, I need mobile repair service.">
           <div style="margin-left:2rem; margin-bottom:1.2rem; font-size:1.4rem; color:#555;">
-            Submitting will open your email app with the message filled in so you can email MobileCare Nepal.
+            Install the whatsApp app or login WhatsApp Web to sent the message via whatsapp.
+         </div>
+          <input type="text" name="name" placeholder="Name" class="contact-form-txt" required>
+          <!-- <input type="tel" name="phone" pattern="[0-9]{10}" required placeholder="Contact number" maxlength="10" class="contact-form-phone">
+          <input type="email" name="email" placeholder="Email" class="contact-form-email" required> -->
+          <textarea placeholder="Your Message" name="message" class="contact-form-txtarea" required></textarea>
+         
+          <div  class="contact-form-btn" >
+            <input type="submit" value="Send Message"><i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-loader" role="status" aria-label="Sending via WhatsApp..."></span>
           </div>
-          <input type="submit" value="Send Message" class="contact-form-btn">
+         
         </form>
       </div>
     </div>
@@ -66,15 +70,15 @@
         <div class="footer-brand">
           <img src="./images/image.png" alt="MobileCare Nepal logo">
           <div>
-            <h3>MobileCare Nepal</h3>
+            <!-- <h3>MobileCare Nepal</h3> -->
             <p class="footer-meta">Professional mobile repair service in Nepal for iPhone and Android smartphones.</p>
           </div>
         </div>
         <div class="footer-social" aria-label="Social links">
-          <a href="https://www.facebook.com/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://twitter.com/login" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.facebook.com/share/1AwaZG5QcF/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.tiktok.com/@mobilecare.nepal?_r=1&_t=ZS-94hmDHwyHSe" aria-label="Tiktok" target="_blank"><i class="fab fa-tiktok"></i></a>
+          <!-- <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a> -->
         </div>
       </div>
 
@@ -93,8 +97,9 @@
         <h3>Contact</h3>
         <div class="footer-meta">
           Kathmandu, Nepal<br>
-          Phone / WhatsApp: 9808166785<br>
-          Website: <a href="https://www.mobilecarenepal.com">www.mobilecarenepal.com</a>
+          Phone / WhatsApp: 9808166785<br> <br>
+          <p>click the below link to contact <br> us via whatsapp</p>
+          <a href="./contact.html" >Click here to Contact..</a>
         </div>
       </div>
     </div>
@@ -106,7 +111,6 @@
     </div>
   </footer>
 
-  <a href="#" class="back-to-top" aria-label="Back to top"><i class="fas fa-angle-up"></i></a>
   <script src="./js/main.js"></script>
 </body>
 </html>
